@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem 'builder'
 gem 'coderay_bash'
 gem 'kramdown'
+gem 'kramdown-syntax-coderay'
 gem 'mime-types'
 gem 'nokogiri'
 gem 'nanoc', '3.6.3'

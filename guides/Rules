@@ -10,6 +10,7 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 require 'coderay_bash'
+require 'kramdown-syntax-coderay'
 
 compile '/static/*' do
 end
@@ -21,7 +22,7 @@ end
 compile '/' do
   filter :pretty_urls
   filter :erb
-  filter :kramdown, :toc_levels => [2]
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay
   layout 'default'
 end
 
@@ -55,13 +56,13 @@ end
 compile '/feed/' do
   filter :pretty_urls
   filter :erb
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
 end
 
 compile '/developer/' do
   filter :pretty_urls
   filter :erb
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'developer'
 end
 
@@ -71,7 +72,7 @@ compile '/developer/*' do
   filter :parse_info_boxes
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :fenced_code_blocks
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'developer/default'
 end
 
@@ -81,7 +82,7 @@ compile '/release_notes/*' do
   filter :parse_info_boxes
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :fenced_code_blocks
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'release_notes/default'
 end
 
@@ -90,7 +91,7 @@ compile '/api/' do
   filter :erb
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :fenced_code_blocks
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'api'
 end
 
@@ -101,7 +102,7 @@ compile '/api/*' do
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :fenced_code_blocks
   filter :parse_info_boxes
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'api/default'
 end
 
@@ -110,7 +111,7 @@ compile '/user/' do
   filter :erb
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :fenced_code_blocks
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'user'
 end
 
@@ -120,7 +121,7 @@ compile '/user/*' do
   filter :parse_info_boxes
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :fenced_code_blocks
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'user/default'
 end
 
@@ -130,7 +131,7 @@ compile '/release_notes/' do
   filter :erb
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :parse_info_boxes
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'release_notes'
 end
 
@@ -140,7 +141,7 @@ compile '/release_notes/*' do
   filter :erb
   # Converts ``` codeblocks into Kramdown-friendly ~~~
   filter :parse_info_boxes
-  filter :kramdown, :toc_levels => [2], :coderay_line_numbers => nil, :coderay_css => :class
+  filter :kramdown, :toc_levels => [2], :syntax_highlighter => :coderay, :syntax_highlighter_opts => { :line_numbers => nil, :css => :class }
   layout 'release_notes/default'
 end
 

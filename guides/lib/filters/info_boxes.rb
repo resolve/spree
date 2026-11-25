@@ -1,4 +1,5 @@
 require 'kramdown'
+require 'kramdown-syntax-coderay'
 
 class ParseInfoBoxes < Nanoc::Filter
 
@@ -36,7 +37,7 @@ class ParseInfoBoxes < Nanoc::Filter
     end
 
     def parse_inner_content(content)
-      Kramdown::Document.new(content).to_html
+      Kramdown::Document.new(content, :syntax_highlighter => :coderay).to_html
     end
 end
 
